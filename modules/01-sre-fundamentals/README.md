@@ -1,185 +1,59 @@
-# Module 01: SRE Fundamentals & Culture
+# Module 01: SRE Fundamentals and Culture
 
 | | |
 |---|---|
-| **Time** | 3-5 hours |
+| **Time** | 3 hours |
 | **Difficulty** | Beginner |
-| **Prerequisites** | Docker installed, basic terminal knowledge |
 
 ---
 
 ## Learning Objectives
 
-By the end of this module, you will be able to:
-
-- Understand the core concepts of SRE Fundamentals & Culture
-- Set up and configure the required tools and environments
-- Complete hands-on exercises that demonstrate practical skills
-- Apply these skills in real-world scenarios
-- Pass the module validation to prove your understanding
+- Understand Site Reliability Engineering principles
+- Know the difference between SRE and traditional Ops
+- Understand the SRE role in an organization
 
 ---
 
-## Concepts
+## Key Concepts
 
-### What is SRE Fundamentals & Culture?
+### What is SRE?
 
-SRE Fundamentals & Culture is a fundamental component of SRE Incident Response: Zero to Hero. In production environments, this skill is used daily by engineers to build, deploy, and maintain reliable systems.
+SRE is what happens when you ask a software engineer to design an operations team. Created at Google in 2003 by Ben Treynor.
 
-**Real-world analogy:** Think of SRE Fundamentals & Culture like learning to read a map before navigating a city. Once you understand the fundamentals, you can find your way through any complex system.
+**Core principles:**
+1. **Embrace risk** — 100% reliability is wrong target
+2. **SLOs, not SLAs** — Internal targets before customer contracts
+3. **Eliminate toil** — Automate repetitive operational work
+4. **Monitor meaningfully** — SLIs tied to user experience
+5. **Release engineering** — Make deployments boring
+6. **Simplicity** — Complexity is the enemy of reliability
 
-### Why Does This Matter?
+### SRE vs DevOps
 
-Companies like Google, Netflix, Amazon, and Meta rely on these practices to:
-- Deploy thousands of times per day
-- Maintain 99.99% uptime
-- Scale to millions of users
-- Recover from failures in minutes
-
-### Key Terminology
-
-| Term | Definition |
+| SRE | DevOps |
 |---|---|
-| **Core concept 1** | The foundational building block of this module |
-| **Core concept 2** | How components interact and communicate |
-| **Core concept 3** | The pattern used for reliability and scale |
-| **Best practice** | The industry-standard approach to implementation |
+| Specific role with specific practices | Cultural movement |
+| Error budgets, SLOs, on-call | CI/CD, collaboration, automation |
+| Prescriptive (how) | Descriptive (what) |
+| SRE implements DevOps principles | DevOps is the philosophy |
 
 ---
 
 ## Hands-On Lab
 
-### Prerequisites Check
+### Exercise 1: Define Your Team Charter
 
-Before starting, verify your environment:
+Write an SRE charter for a fictional e-commerce platform:
+- What services does the SRE team own?
+- What is the on-call rotation?
+- What is the error budget policy?
+- When does the SRE team engage vs the dev team?
 
-```bash
-# Check Docker is running
-docker --version
-docker compose version
+### Exercise 2: Identify Toil
 
-# Check you have the project cloned
-ls modules/01-sre-fundamentals/
-```
-
-### Exercise 1: Setup and Configuration
-
-**Goal:** Get the foundation in place for this module.
-
-**Step 1:** Review the starter files
-```bash
-ls modules/01-sre-fundamentals/lab/starter/
-```
-
-**Step 2:** Set up the required environment
-```bash
-# Follow the specific setup for this module
-# Each command is explained below
-cd modules/01-sre-fundamentals/lab/starter/
-```
-
-**Step 3:** Verify the setup
-```bash
-# Run the validation to check your setup
-bash modules/01-sre-fundamentals/validation/validate.sh
-```
-
-**What you should see:** The validation script will show PASS for setup-related checks.
-
-### Exercise 2: Core Implementation
-
-**Goal:** Implement the main concept of this module.
-
-Follow the detailed instructions in the starter directory. The solution directory contains the reference implementation if you get stuck.
-
-**Key points:**
-- Read each instruction carefully before executing
-- Understand WHY each step is needed, not just WHAT to do
-- If something fails, check the troubleshooting section below
-
-### Exercise 3: Integration and Testing
-
-**Goal:** Connect this module's work with the broader system.
-
-- Verify your implementation works with previous modules
-- Run all tests and validation scripts
-- Document what you learned
-
----
-
-## Starter Files
-
-Check `lab/starter/` for:
-- Configuration templates to fill in
-- Skeleton code to complete
-- Setup scripts to run
-
-## Solution Files
-
-If you get stuck, `lab/solution/` contains:
-- Complete working configuration
-- Fully implemented code
-- Expected output examples
-
-> **Important:** Try to complete the exercises yourself first! Looking at solutions too early reduces learning.
-
----
-
-## Common Mistakes
-
-| Mistake | Symptom | Fix |
-|---|---|---|
-| Skipping prerequisites | Module exercises fail | Complete previous modules first |
-| Copy-pasting without understanding | Cannot troubleshoot issues | Read explanations, not just commands |
-| Not checking validation | Think you are done but are not | Run validate.sh after each exercise |
-| Ignoring error messages | Problems compound | Read errors carefully, they tell you what is wrong |
-
----
-
-## Self-Check Questions
-
-Test your understanding before moving on:
-
-1. What is the main purpose of SRE Fundamentals & Culture?
-2. How does this connect to the previous module?
-3. What would happen in production without this?
-4. Can you explain this concept to a non-technical person?
-5. What are three things that could go wrong, and how would you fix them?
-
----
-
-## You Know You Have Completed This Module When...
-
-- [ ] All exercises completed
-- [ ] Validation script passes: `bash modules/01-sre-fundamentals/validation/validate.sh`
-- [ ] You can explain the concepts without looking at notes
-- [ ] You understand how this applies to real-world scenarios
-- [ ] Self-check questions answered confidently
-
----
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue: Validation script fails**
-- Re-read the exercise instructions
-- Check that Docker containers are running
-- Verify you are in the correct directory
-- Compare your work with the solution files
-
-**Issue: Docker container not starting**
-```bash
-docker compose logs <service-name>  # Check logs
-docker compose down && docker compose up -d  # Restart
-```
-
-**Issue: Permission denied**
-```bash
-chmod +x validation/validate.sh  # Make script executable
-sudo chown -R $USER .           # Fix ownership (Linux)
-```
-
----
+List 10 manual operational tasks and classify:
+- Is it manual? Repetitive? Automatable? No lasting value?
+- If yes to all → It is **toil** and should be automated
 
 **Next: [Module 02 →](../02-sli-slo-sla/)**

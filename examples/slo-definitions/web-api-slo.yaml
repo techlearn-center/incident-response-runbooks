@@ -1,0 +1,35 @@
+# SLO Definition for Web API Service
+service: web-api
+owner: platform-team
+
+slos:
+  - name: Availability
+    description: "Percentage of successful requests"
+    sli:
+      type: request-based
+      good_events: "http_status < 500"
+      total_events: "all requests"
+    target: 99.9%
+    window: 30d
+    error_budget: 0.1%  # ~43 minutes of downtime per month
+    alerting:
+      burn_rate_1h: 14.4  # Alert if burning 14.4x budget
+      burn_rate_6h: 6.0
+
+  - name: Latency
+    description: "Percentage of requests faster than 200ms"
+    sli:
+      type: request-based
+      good_events: "response_time < 200ms"
+      total_events: "all requests"
+    target: 99.0%
+    window: 30d
+
+  - name: Throughput
+    description: "System can handle expected load"
+    sli:
+      type: threshold
+      metric: "requests_per_second"
+      threshold: 1000
+    target: 99.5%
+    window: 30d
